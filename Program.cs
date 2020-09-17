@@ -17,13 +17,9 @@ namespace Dijkstra
          dijkstra.addEdge(4,3,2);
          dijkstra.addEdge(2,3,6);
 
-         int distance = dijkstra.minmumDistanceBtwTwoNodes(0,3);
-        
+         int distance = dijkstra.minmumDistanceBtwTwoNodes(0,3); 
         Console.WriteLine(distance);
-        while(dijkstra.q.Count!=0){
-             Console.Write(dijkstra.q.Dequeue());
-          
-        }
+      
         }   
 
    
@@ -34,7 +30,7 @@ namespace Dijkstra
       List<List<Edge>> graph;
       public bool [] visited;
       int [] distance;
-     public Queue q ;
+  
 
       public Graph(int nodes){
      graph= new List<List<Edge>>();
@@ -55,7 +51,6 @@ namespace Dijkstra
       {
         if(source == destination) return 0;
         PriorityQueue<Edge> minHeap = new PriorityQueue<Edge>();
-         q = new Queue();
         distance[source]=0;
         minHeap.Enqueue(new Edge(0,0));
         while(minHeap.Count()!=0)
@@ -67,9 +62,7 @@ namespace Dijkstra
           {
               continue;
           }
-          
           visited[v]= true;
-          q.Enqueue(v);
           List<Edge> childList = graph[v];
           
           foreach (var child in childList)
